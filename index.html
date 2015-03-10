@@ -4,12 +4,13 @@
 <head>
   <!-- Custom Fonts -->
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
 
   <meta charset='utf-8' />
   <meta http-equiv="X-UA-Compatible" content="chrome=1" />
   <meta name="description" content="Some Cool Data Analytics for Untappd" />
 
-  <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
 
   <title>Data Analytics for Untappd</title>
 </head>
@@ -31,6 +32,8 @@
   <!-- MAIN CONTENT -->
   <div id="main_content_wrap" class="outer">
     <section id="main_content" class="inner">
+
+
       <h1>Concept...</h1>
       <p>Since drinking/enjoying adult beverages has always been a very social event, we should be
         able to scrape some of the data from our favorite beer tracking app, Untappd.</p>
@@ -39,6 +42,24 @@
         <p>Type in the username of the person you want to review and the page will do the rest. The
           page will show you what styles have been enjoyed, along with a few other items.</p>
 
+          <!-- search -->
+          <section id="search">
+            <div class="well">
+              <form class="form-inline" id="user-name-form" role="form">
+                <label for="user-name">Untappd user</label>
+                <input type="text" id="user-name" class="form-control" placeholder="">
+                <button type="submit" id="user-name-submit-btn" class="btn btn-success">
+                Search
+                </button>
+              </form>
+            </div>
+          </section>
+
+          <!-- user -->
+          <section id="user"></section>
+
+          <!-- beers -->
+          <section id="beers"></section>
 
           <!-- <ol>
           <li>
@@ -79,6 +100,111 @@
 
     </footer>
   </div>
+
+  <!-- Templates -->
+  <!-- User Template -->
+  <script type="text/template" id="user-template">
+    <div class="row">
+      <div class="col-md-4 user">
+        <a href="<%= untappd_url %>" target="_blank">
+          <img src="<%= user_avatar %>">
+        </a>
+
+        <h3>
+          <%= first_name %> <%= last_name %>
+          (<%= user_name %>)
+        </h3>
+
+        <div class="call-to-action">
+          <button id="view-recent-beers-btn" class="btn btn-primary">
+            View Recent Beers
+          </button>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <table class="user-stats table table-bordered">
+          <% _.each(stats, function (stat, key) { %>
+            <tr class="stat">
+              <td>
+                <%= key.replace('total_', '') %>
+              </td>
+              <td>
+                <%= stat %>
+              </td>
+            </tr>
+          <% }); %>
+        </table>
+      </div>
+
+      <!-- <div class="col-md-4">
+        <h4>Bio</h4>
+        <% if (bio) %>
+          <p><%= bio %></p>
+        <% else %>
+          <p>No Bio Provided.</p>
+      </div> -->
+    </div>
+  </script>
+
+  <!-- Beer & Brewery Template -->
+  <script type="text/template" id="beer-template">
+    <!-- <div class="beer-btn">
+      <a data-toggle="modal" data-target="#<%= beer.bid %>">
+        <img src="<%= beer.beer_label %>">
+      </a>
+    </div> -->
+
+    <div class="modal" id="<%= beer.bid %>">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <div class="pull-right">
+              <img src="<%= beer.beer_label %>">
+            </div>
+            <h2 class="beer-name"><%= beer.beer_name %></h2>
+            <h4 class="brewery-name">
+              <%= brewery.brewery_name %>
+            </h4>
+            <h5>
+              <%= brewery.location.brewery_city %>, <%= brewery.location.brewery_state %>
+            </h5>
+          </div>
+
+          <!-- <div class="modal-body">
+            <h5>
+              <span class="beer-style"><%= beer.beer_style %></span> |
+              <span class="beer-abv"><%= beer.beer_abv %></span> ABV
+            </h5>
+            <div class="beer-description">
+              <p><%= beer.beer_description %></p>
+            </div>
+
+            <div class="brewery-data">
+              Brewery:
+              <a href="<%= brewery.contact.url %>" target="_blank">Website</a> |
+              <a href="<%= brewery.contact.facebook %>" target="_blank">Facebook</a> |
+              <a href="https://twitter.com/<%= brewery.contact.twitter %>" target="_blank">Twitter</a>
+            </div>
+
+            <div class="brewery-map" id="map-<%= brewery.brewery_id %>">
+              <img src="https://maps.googleapis.com/maps/api/staticmap?center=<%= brewery.location.lat %>,<%= brewery.location.lng %>&zoom=9&size=565x250&markers=color:green%7C<%= brewery.location.lat %>,<%= brewery.location.lng %>&key=AIzaSyBtZeCYnQbFPvi8MFkNNEwdxw7qkEAHGWY">
+            </div>
+          </div> -->
+
+          <!-- <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div> -->
+        </div>
+      </div>
+    </div>
+  </script>
+
+  <script src="scripts/vendor.js"></script>
+
+  <script src="scripts/plugins.js"></script>
+
+  <script src="scripts/main.js"></script>
 
 </body>
 </html>
