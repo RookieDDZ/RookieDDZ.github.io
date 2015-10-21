@@ -6,7 +6,7 @@ var buildAPIUrl = function(e, t) {
   app = app || {};
 app.Beer = Backbone.Model.extend({}), app.User = Backbone.Model.extend({
   defaults: {
-    user_name: "boo"
+    user_name: "" //used for defaulting to a certain username
   },
   url: function() {
     var e = this.get("user_name");
