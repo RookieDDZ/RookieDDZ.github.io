@@ -162,23 +162,23 @@
             <div class="pull-right">
               <img src="<%= beer.beer_label %>">
             </div>
-            <h2 class="beer-name"><%= beer.beer_name %></h2>
-            <h5 class="brewery-name">
+            <h5 class="beer-name"><%= beer.beer_name %></h5>
+            <h8 class="brewery-name">
               <%= brewery.brewery_name %>
-            </h5>
-            <h5>
+            </h8>
+            <h8>
               <%= brewery.location.brewery_city %>, <%= brewery.location.brewery_state %>
-            </h5>
+            </h8>
           </div>
 
-          <!-- <div class="modal-body">
+          <div class="modal-body">
             <h5>
               <span class="beer-style"><%= beer.beer_style %></span> |
               <span class="beer-abv"><%= beer.beer_abv %></span> ABV
             </h5>
-            <div class="beer-description">
+            <!-- <div class="beer-description">
               <p><%= beer.beer_description %></p>
-            </div>
+            </div> -->
 
             <div class="brewery-data">
               Brewery:
@@ -187,10 +187,10 @@
               <a href="https://twitter.com/<%= brewery.contact.twitter %>" target="_blank">Twitter</a>
             </div>
 
-            <div class="brewery-map" id="map-<%= brewery.brewery_id %>">
+            <!-- <div class="brewery-map" id="map-<%= brewery.brewery_id %>">
               <img src="https://maps.googleapis.com/maps/api/staticmap?center=<%= brewery.location.lat %>,<%= brewery.location.lng %>&zoom=9&size=565x250&markers=color:green%7C<%= brewery.location.lat %>,<%= brewery.location.lng %>&key=AIzaSyBtZeCYnQbFPvi8MFkNNEwdxw7qkEAHGWY">
-            </div>
-          </div> -->
+            </div> -->
+          </div>
 
           <!-- <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
