@@ -1,4 +1,5 @@
 untappd API query
+Simple Query to retrieve checkin posts and information
 [Main Page](https://rookieddz.github.io/)
 
 
